@@ -1,15 +1,25 @@
+#ifndef SCENE_H
+#define SCENE_H
+
+#include<vector>
+#include "Observer.h"
+#include "drawableObject.h"
+#include "LightSource.h"
 
 namespace raytracing{
 class Scene{
 
 private:
-	int numberofObjects;
-	int numberofLightsources;
 	Observer obs;
-	drawableObjects drawableObjects[numberofObjects];
-	Scene theScene;
-	LightSource lights[numberofLightsources];
+	static Scene theScene;
+	std::vector<drawableObject> drawableObjects;
+	std::vector<LightSource> lights;
 
 public:
-	getInstance(); 
-};}
+	static Scene getInstance();
+	std::vector<drawableObject>& getDrawableObjects() {return drawableObjects;}
+	std::vector<LightSource>& getLightSources() {return lights;}
+};
+}
+
+#endif //SCENE_H
