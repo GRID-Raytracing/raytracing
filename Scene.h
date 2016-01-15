@@ -1,8 +1,5 @@
-#include <iostream>
 
-using namespace std;
-
-
+namespace raytracing{
 class Scene{
 
 private:
@@ -15,8 +12,4 @@ private:
 
 public:
 	getInstance(); 
-
-
-
-
-};
+};}

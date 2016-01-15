@@ -1,7 +1,4 @@
-#include <iostream>
-
-using namespace std;
-
+namespace raytracing{
 class drawableObject: public Object, public Scene{
 
 protected:
@@ -11,4 +8,4 @@ protected:
 public:
 	virtual Vector3D intersection (Ray r);
 	virtual Color getColorAtIntersection( Vector3D intersection, Ray r);
-};
+};}

@@ -1,7 +1,4 @@
-#include <iostream>
-
-using namespace std;
-
+namespace raytracing{
 class Observer: public Object{
 private:
 	Vector3D viewingDirection;
@@ -14,4 +11,4 @@ private:
 public:
 	void render();
 	void exportImage(string path, string format);
-};
+};}
