@@ -1,3 +1,6 @@
+#include "drawableObjects.h"
+#include "LightSource.h"
+#include "Observer.h"
 
 namespace raytracing{
 class Scene{
@@ -11,5 +14,6 @@ private:
 	LightSource lights[numberofLightsources];
 
 public:
-	getInstance(); 
-};}
+	Scene getInstance() { return this; }
+};
+}
