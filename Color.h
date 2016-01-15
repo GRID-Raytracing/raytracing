@@ -17,6 +17,6 @@ public:
   unsigned char R(){ return r; }
   unsigned char G(){ return g; }
   unsigned char B(){ return b; }
-
+ 
 
 }
