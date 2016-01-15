@@ -28,6 +28,11 @@ public:
   	Vector3D temp(x/length,y/length,z/length);
   	return temp; }
   double getLength() { return sqrt(x*x+y*y+z*z);}
+  
+  Vector3D operator+(Vector3D other) {
+  	Vector3D temp(x+other.X(),y+other.Y(), z+other.Z());
+  	return temp;
+  }
 
 private:
   double x;
