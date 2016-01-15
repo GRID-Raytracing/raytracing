@@ -17,6 +17,7 @@ private:
 	Scene(Observer* o, std::vector<drawableObject> dO, std::vector<LightSource> l):
 		obs(o), drawableObjects(dO), lights(l) {theScene = this;};
 
+
 public:
 	~Scene() {theScene = nullptr;};
 	static Scene& getInstance() { 
