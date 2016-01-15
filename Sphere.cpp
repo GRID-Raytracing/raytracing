@@ -1,5 +1,6 @@
 #include "drawableObject.h"
 #include "Sphere.h"
+#include <cmath>
 
 double Sphere::intersection(Ray r){
 	//Ray: vec.origin + vec.direction * t = vec.present
@@ -19,20 +20,30 @@ double Sphere::intersection(Ray r){
 	//radius
 	double sphereRadius = getRadius();
 
-	//intersection point : i
-	double intersectionPoint;
-	double A,B,C;
+	//calculate intersection point
+	double A,B,C,D;
 	//A:
 	A = rayDirection * rayDirection;
 	//B:
 	B = 2*(rayOrigin * rayDirection - spherePosition * rayDirection);
 	//C:
 	C = rayOrigin * rayOrigin + spherePosition * spherePosition - 2*(rayOrigin * spherePosition) - sphereRadius * sphereRadius;
+	//D:
+	D = B * B - 4*A*C;
 
-	//t
-	//pattern
+	//
+	double direction;
+	if(D < 0)
+		//no intersection point
+		direction = 0.0;
+	else if(D <= 0){
+		t = (-B + sqrt(D)) / (2*A);
+		//intersection point
+		Vector3D intersectionPoint;
+		intersectionPoint = rayOrigin + t*rayDirection;
+		direction = (intersectionPoint - rayOrigin)　* (intersectionPoint - rayOrigin);
+	}
 
-	double d;
-	d = 2.0;
-	return d;
+	return direction;
+
 }
