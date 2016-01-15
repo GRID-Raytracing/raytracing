@@ -1,3 +1,0 @@
-class Vector3D {
-  
-};
