@@ -2,32 +2,34 @@
 #include "Sphere.h"
 #include <cmath>
 
-double Sphere::intersection(Ray r){
-	//Ray: vec.origin + vec.direction * t = vec.present
-	//Sphere: ( vec.present - vec.position )^2 = radius
-	//Simultaneous equations with vec.present
-	//t = [ -B±√(B^2 - 4AC) ] / 2A
-	//A = (vec.direction)^2
-	//B = 2*( vec.origin * vec.direction - vec.position * vec.direction)
-	//C = (vec.origin)^2 + (vec.position)^2 - 2*(vec.origin*vec.position) - (radius)^2
+//http://www.vcl.jp/~kanazawa/raytracing/?page_id=78
 
-	//vec.origin
-	Vector3D rayOrigin = r.getOrigin();
-	//vec.direction
-	Vector3D rayDirection = r.getDirection();
-	//vec.position
-	Vector3D spherePosition = getPosition();
-	//radius
-	double sphereRadius = getRadius();
+double Sphere::intersection(Ray r){
+	//Ray: o(vec.origin) + d(vec.direction) * t = p
+	//Sphere: ( p - s(vec.position) )^2 = r(radius)^2
+	//Simultaneous equations with p
+	//t = [ -B±√(B^2 - 4AC) ] / 2A
+	//A = d^2
+	//B = 2*( o*d - s*d )
+	//C = o^2 + s^2 - 2*o*s - r^2
+
+	//o(vec.origin)
+	Vector3D o = r.getOrigin();
+	//d(vec.direction)
+	Vector3D d = r.getDirection();
+	//s(vec.position)
+	Vector3D s = getPosition();
+	//r(radius)
+	double r = getRadius();
 
 	//calculate intersection point
 	double A,B,C,D;
 	//A:
-	A = rayDirection * rayDirection;
+	A = d*d;
 	//B:
-	B = 2*(rayOrigin * rayDirection - spherePosition * rayDirection);
+	B = 2*( o*d - s*d );
 	//C:
-	C = rayOrigin * rayOrigin + spherePosition * spherePosition - 2*(rayOrigin * spherePosition) - sphereRadius * sphereRadius;
+	C = o*o + s*s - 2*( o*s ) - r*r;
 	//D:
 	D = B * B - 4*A*C;
 
@@ -38,10 +40,10 @@ double Sphere::intersection(Ray r){
 		direction = 0.0;
 	else if(D <= 0){
 		t = (-B + sqrt(D)) / (2*A);
-		//intersection point
-		Vector3D intersectionPoint;
-		intersectionPoint = rayOrigin + t*rayDirection;
-		direction = (intersectionPoint - rayOrigin)　* (intersectionPoint - rayOrigin);
+		//i(intersection point)
+		Vector3D i;
+		i = o + t*d;
+		direction = (i - o)　* (i - o);
 	}
 
 	return direction;
