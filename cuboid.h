@@ -11,7 +11,7 @@ private:
 public:
 	//constructor
 	Cuboid(){}
-	Cuboid(double ref, Color col, double t, double x, double y, double z): drawableObject(rev,col,t),xSize(x), ySize(y), zSize(z) {}	
+	Cuboid(double ref, Color col, double t, double x, double y, double z): drawableObject(ref,col,t),xSize(x), ySize(y), zSize(z) {}	
 
 	//setter
 	void setxSize(double x):xSize(x){};

@@ -1,6 +1,8 @@
 #ifndef OBJECT_H
 #define OBJECT_H
 
+#include "Vector3D.h"
+
 using namespace std;
 
 namespace raytracing {

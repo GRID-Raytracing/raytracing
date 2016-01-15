@@ -1,7 +1,7 @@
-
+#ifndef COLOR_H
+#define COLOR_H
 namespace raytracing {
-
-  class Color {
+ class Color {
   private:
     double r, g, b;
   public:
@@ -17,6 +17,9 @@ namespace raytracing {
     unsigned char getCharR(){ return r*255; }
     unsigned char getCharG(){ return g*255; }
     unsigned char getCharB(){ return b*255; }
+    unsigned int RGB(double r, double g, double b){return (r*65536)+(g*256)+b;}
   };
 
+
 }
+#endif //COLOR_H

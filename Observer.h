@@ -1,3 +1,5 @@
+#ifndef OBSERVER_H
+#define OBSERVER_H
 
 #include <string>
 #include "Vector3D.h"
@@ -19,3 +21,5 @@ namespace raytracing {
 	void exportImage(string path, string format);
   };
 }
+
+#endif //OBSERVER_H
