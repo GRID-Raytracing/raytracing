@@ -34,6 +34,10 @@ public:
   	return temp;
   }
 
+  double operator*(Vector3D other) {
+  	return x*other.X()+y*other.Y()+z*other.Z();
+  }
+
 private:
   double x;
   double y;
