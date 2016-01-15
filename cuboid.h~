@@ -1,0 +1,11 @@
+#include <iostream>
+
+using namespace std;
+
+class cuboid: public drawableObject
+{
+private:
+	double xSize;
+	double ySize;
+	double zSize;
+};
