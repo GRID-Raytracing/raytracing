@@ -7,5 +7,5 @@ namespace raytracing {
 	public:
 		Object(Vector3D p): position(p) {};
 		Vector3D getPosition() { return position;};
-	}
+    };
 }
