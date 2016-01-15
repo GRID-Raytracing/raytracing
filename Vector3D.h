@@ -34,6 +34,15 @@ public:
   	return temp;
   }
 
+  Vector3D operator-(Vector3D other) {
+  	Vector3D temp(x-other.X(),y-other.Y(), z-other.Z());
+  	return temp;
+  }
+
+  double operator*(Vector3D other) {
+  	return x*other.X()+y*other.Y()+z*other.Z();
+  }
+
 private:
   double x;
   double y;
