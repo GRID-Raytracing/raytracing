@@ -1,4 +1,5 @@
-
+#ifndef COLOR_H
+#define COLOR_H
 namespace raytracing {
  class Color {
   private:
@@ -21,3 +22,4 @@ namespace raytracing {
 
 
 }
+#endif //COLOR_H
