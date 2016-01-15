@@ -3,6 +3,7 @@
 
 using namespace std;
 
+namespace raytracing {
 class Vector3D {
 public:
   // constructor
@@ -28,5 +29,6 @@ private:
   double y;
   double z;
 };
+} // namespace raytracing
 
 #endif // VECTOR3D_H
