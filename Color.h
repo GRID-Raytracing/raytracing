@@ -18,4 +18,5 @@ public:
   unsigned char G(){ return g; }
   unsigned char B(){ return b; }
 
+
 }
