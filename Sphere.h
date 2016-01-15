@@ -19,6 +19,7 @@ public:
 
 private:
   double radius;
+  virtual double intersection(Ray r);
 };
 } // namespace raytracing
 

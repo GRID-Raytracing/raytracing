@@ -14,7 +14,7 @@ protected:
 	Color color;
 	double transparency;
 public:
-
+	drawableObject(Vector3D& pos, double& ref, Color& c, double& t): Object(pos), reflectivity(ref), color(c), transparency(t) {};
 	virtual double intersection (Ray r);
 	virtual Color getColorAtIntersection( Vector3D intersection, Ray r);
 };}
