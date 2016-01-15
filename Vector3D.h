@@ -1,6 +1,8 @@
 #ifndef VECTOR3D_H
 #define VECTOR3D_H
 
+#include<cmath>
+
 using namespace std;
 
 namespace raytracing {
@@ -21,8 +23,16 @@ public:
   double Y() { return y; }
   double Z() { return z; }
 
-  Vector3D normalise() {}
-  double getLength() {}
+  Vector3D normalise() {
+  	double length = this->getLength();
+  	Vector3D temp(x/length,y/length,z/length);
+  	return temp; }
+  double getLength() { return sqrt(x*x+y*y+z*z);}
+  
+  Vector3D operator+(Vector3D other) {
+  	Vector3D temp(x+other.X(),y+other.Y(), z+other.Z());
+  	return temp;
+  }
 
 private:
   double x;

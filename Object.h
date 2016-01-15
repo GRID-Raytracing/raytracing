@@ -1,11 +1,21 @@
+#ifndef OBJECT_H
+#define OBJECT_H
+
+using namespace std;
+
 namespace raytracing {
 	
 	class Object {
 	protected:
-		Vector3D position;
-		
+        Vector3D position;
+        
 	public:
-		Object(Vector3D p): position(p) {};
-		Vector3D getPosition() { return position;};
+        //constructor
+        Object(){}
+        Object(Vector3D p): position(p) {}
+        //get
+        Vector3D getPosition() { return position;}
     };
 }
+
+#endif // OBJECT_H
