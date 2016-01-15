@@ -6,6 +6,6 @@ protected:
 	Color color;
 	double transparency;
 public:
-	virtual Vector3D intersection (Ray r);
+    virtual double intersection(Ray r) {return 0.0;};
 	virtual Color getColorAtIntersection( Vector3D intersection, Ray r);
 };}
