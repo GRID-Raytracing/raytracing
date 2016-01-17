@@ -1,51 +1,63 @@
 #include "drawableObject.h"
 #include "Sphere.h"
+#include "Constants.h"
 #include <cmath>
+#include <iostream>
+
 
 //http://www.vcl.jp/~kanazawa/raytracing/?page_id=78
 
-double Sphere::intersection(Ray r){
-	//Ray: o(vec.origin) + d(vec.direction) * t = p
-	//Sphere: ( p - s(vec.position) )^2 = r(radius)^2
-	//Simultaneous equations with p
-	//t = [ -B±√(B^2 - 4AC) ] / 2A
-	//A = d^2
-	//B = 2*( o*d - s*d )
-	//C = o^2 + s^2 - 2*o*s - r^2
+namespace raytracing {
 
-	//o(vec.origin)
-	Vector3D o = r.getOrigin();
-	//d(vec.direction)
-	Vector3D d = r.getDirection();
-	//s(vec.position)
-	Vector3D s = getPosition();
-	//r(radius)
-	double r = getRadius();
+    double Sphere::intersection(Ray r){
+            //Ray: o(vec.origin) + d(vec.direction) * t = p
+            //Sphere: ( p - s(vec.position) )^2 = r(radius)^2
+            //Simultaneous equations with p
+            //t = [ -B±√(B^2 - 4AC) ] / 2A
+            //A = d^2
+            //B = 2*( o*d - s*d )
+            //C = o^2 + s^2 - 2*o*s - r^2
 
-	//calculate intersection point
-	double A,B,C,D;
-	//A:
-	A = d*d;
-	//B:
-	B = 2*( o*d - s*d );
-	//C:
-	C = o*o + s*s - 2*( o*s ) - r*r;
-	//D:
-	D = B * B - 4*A*C;
+            //o(vec.origin)
+            Vector3D o = r.getOrigin();
+            //d(vec.direction)
+            Vector3D d = r.getDirection();
+            //s(vec.position)
+            Vector3D s = getPosition();
+            //r(radius)
+            double rad = getRadius();
 
-	//
-	double direction;
-	if(D < 0)
-		//no intersection point
-		direction = 0.0;
-	else if(D <= 0){
-		t = (-B + sqrt(D)) / (2*A);
-		//i(intersection point)
-		Vector3D i;
-		i = o + t*d;
-		direction = (i - o)　* (i - o);
-	}
+            //calculate intersection point
+            double A,B,C,D;
+            //A:
+            A = d*d;
+            //B:
+            B = 2*( o*d - s*d );
+            //C:
+            C = o*o + s*s - 2*( o*s ) - rad*rad;
+            //D:
+            D = B * B - 4*A*C;
 
-	return direction;
+            //
+            double t=-5;
+            if(D < 0) {
+                    //no intersection point
+                    t = -3.0;
+                    if(DEBUG) cout << "Ray has missed!" <<endl;
+            }
+            else if(D >= 0){
+                    double t1 = (-B + sqrt(D)) / (2*A);
+                    double t2 = (-B - sqrt(D)) / (2*A);
+                    t = (t1>t2)?t1:t2;
+                    if(DEBUG) cout << "Ray has hit!" << endl;
+            }
 
+            return t;
+
+    }
+    
+    Color Sphere::getColorAtIntersection(Vector3D i, Ray r) {
+        return color;
+    }
+    
 }

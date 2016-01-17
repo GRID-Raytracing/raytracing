@@ -12,6 +12,9 @@ GRIDRaytracer: $(OBJ)
 
 emptySceneRenderTest: tests/emptySceneRenderTest.o Ray.o Scene.o  Observer.o  drawableObject.h Vector3D.o
 	$(CC) $(CFLAGS) $^ -o $@
+	
+simpleSphereRenderTest: tests/simpleSphereRenderTest.o Ray.o Scene.o Observer.o drawableObject.h Vector3D.o Sphere.o
+	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $^ -o $@

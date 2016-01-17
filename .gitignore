@@ -26,6 +26,8 @@
 *.exe
 *.out
 *.app
+emptySceneRenderTest
+simpleSphereRenderTest
 
 
 # Editor backup copies

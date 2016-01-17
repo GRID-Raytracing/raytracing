@@ -15,19 +15,22 @@ class Scene{
 private:
 	Observer obs;
 	static Scene* theScene;
-	std::vector<drawableObject> drawableObjects;
-	std::vector<LightSource> lights;
-	Scene(Observer o, std::vector<drawableObject> dO, std::vector<LightSource> l);
+	std::vector<drawableObject*> drawableObjects;
+	std::vector<LightSource*> lights;
+	Scene(Observer o, std::vector<drawableObject*> dO, std::vector<LightSource*> l);
 
 
 public:
-	~Scene() {theScene = nullptr;};
+	~Scene() {
+            theScene = nullptr;            
+        };
 	static Scene* getInstance();
-	std::vector<drawableObject>& getDrawableObjects() {return drawableObjects;}
-	std::vector<LightSource>& getLightSources() {return lights;}
+	std::vector<drawableObject*>& getDrawableObjects() {return drawableObjects;}
+	std::vector<LightSource*>& getLightSources() {return lights;}
         Observer& getObserver() {return obs;};
         
         void setObserver(Observer& o) {obs = o;};
+        void addDrawableObject(drawableObject* d) {drawableObjects.push_back(d);};
 };
 
 

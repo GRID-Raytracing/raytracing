@@ -25,7 +25,7 @@ namespace raytracing {
 	vector<vector<Color> > image; //implemented with vector because dynamic arrays are not part of C++11.
   public:
         Observer(Vector3D pos, Vector3D dir, double dist, Vector3D xDir, Vector3D yDir, unsigned int xRes, unsigned int yRes);
-        Observer(): Observer(Vector3D(0,0,0), Vector3D(0,0,1), 1.0, Vector3D(1,0,0), Vector3D(0,1,0), 100, 100) {};
+        Observer(): Observer(Vector3D(0,0,0), Vector3D(0,0,1), 1.0, Vector3D(0.01,0,0), Vector3D(0,0.01,0), 100, 100) {};
 	void render();
 	void exportImage(string path, string format);
   };

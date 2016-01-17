@@ -13,7 +13,7 @@ namespace raytracing {
         
 	public:
         //constructor
-        Object(Vector3D p): position(p) {}
+        Object(Vector3D& p): position(p) {}
         //get
         Vector3D getPosition() { return position;}
     };

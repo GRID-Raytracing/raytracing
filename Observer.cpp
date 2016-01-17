@@ -1,4 +1,6 @@
 #include "Observer.h"
+#include <iostream>
+#include "Constants.h"
 
 namespace raytracing {
     
@@ -37,6 +39,7 @@ namespace raytracing {
     }
     
     void Observer::render() {
+        if(DEBUG) cout<< "Rendering started." <<endl;
         //get position of top left image corner relative to observer position
         Vector3D topLeft = displayDistance*viewingDirection + (-0.5)*xResolution*xDirection + (-0.5)*yResolution*yDirection;
         //center of top left pixel
