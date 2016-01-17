@@ -1,3 +1,11 @@
+#ifndef RAY_H
+#define RAY_H
+
+
+#include <vector>
+#include "Vector3D.h"
+#include "Color.h"
+
 namespace raytracing {
 	
 	class Ray {
@@ -15,3 +23,4 @@ namespace raytracing {
 	};
 }
 
+#endif //RAY_H

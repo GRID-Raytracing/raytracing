@@ -1,6 +1,5 @@
 #include "Observer.h"
-#include "Ray.h"
-#include "Constants.h"
+
 namespace raytracing {
     
     Observer::Observer(Vector3D pos, Vector3D dir, double dist, Vector3D xDir, Vector3D yDir, unsigned int xRes, unsigned int yRes):
@@ -39,7 +38,7 @@ namespace raytracing {
     
     void Observer::render() {
         //get position of top left image corner relative to observer position
-        Vector3D topLeft = displayDistance*viewingDirection + (-0.5)*xRessolution*xDirection + (-0.5)*yResolution*yDirection;
+        Vector3D topLeft = displayDistance*viewingDirection + (-0.5)*xResolution*xDirection + (-0.5)*yResolution*yDirection;
         //center of top left pixel
         topLeft = topLeft + 0.5*xDirection + 0.5*yDirection;
         

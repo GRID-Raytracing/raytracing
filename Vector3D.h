@@ -3,7 +3,6 @@
 
 #include<cmath>
 
-using namespace std;
 
 namespace raytracing {
 class Vector3D {
@@ -38,6 +37,10 @@ public:
   	Vector3D temp(x-other.X(),y-other.Y(), z-other.Z());
   	return temp;
   }
+  
+  Vector3D operator*(double c) {
+      return Vector3D(x*c,y*c,z*c);
+  }
 
   double operator*(Vector3D other) {
   	return x*other.X()+y*other.Y()+z*other.Z();
@@ -48,6 +51,9 @@ private:
   double y;
   double z;
 };
+
+inline Vector3D operator*(double c, Vector3D& v) { return v.operator*(c);}
+
 } // namespace raytracing
 
 #endif // VECTOR3D_H
