@@ -7,6 +7,7 @@ OBJ:=$(patsubst %.cpp,%.o, $(SRC))
 TARGET=GRIDRaytracer
 TESTS=emptySceneRenderTest simpleSphereRenderTest readScene twoSpheresOcclusionTest
 
+
 GRIDRaytracer: $(TARGET).o $(OBJ)
 	$(CC) $^ -o $@
 
