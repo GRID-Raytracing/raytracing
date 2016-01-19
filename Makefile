@@ -24,7 +24,7 @@ twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o Ray.o Scene.o Observer.
 
 
 clean:
-	rm -rf *.o $(EXECS)  
+	rm -rf *.o $(EXECS) simpleSphereTest.bmp twoSpheresTest.bmp
 
 
  

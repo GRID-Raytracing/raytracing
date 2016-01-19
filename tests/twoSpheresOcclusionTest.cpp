@@ -18,6 +18,6 @@ int main(){
     
     if(DEBUG) cout << "starting Rendering" <<endl;
     scene->getObserver().render();
-    scene->getObserver().exportImage("simpleSphereTest.bmp", "bmp");
+    scene->getObserver().exportImage("twoSpheresTest.bmp", "bmp");
     return 0;
 }
