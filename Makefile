@@ -29,7 +29,7 @@ twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ)
 test: $(TESTS) $(OBJ)
 	
 clean:
-	rm -rf *.o $(EXECS) simpleSphereTest.bmp twoSpheresTest.bmp
+	rm -rf *.o $(TARGET) $(TESTS) simpleSphereTest.bmp twoSpheresTest.bmp
 
 
  
