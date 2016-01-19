@@ -17,10 +17,10 @@ emptySceneRenderTest: tests/emptySceneRenderTest.o $(OBJ)
 readScene: tests/readScene.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
-simpleSphereRenderTest: tests/simpleSphereRenderTest.o Ray.o Scene.o Observer.o drawableObject.h Vector3D.o Sphere.o
+simpleSphereRenderTest: tests/simpleSphereRenderTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
-twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o Ray.o Scene.o Observer.o drawableObject.h Vector3D.o Sphere.o
+twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.cpp
