@@ -2,15 +2,19 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall -pedantic
 
-SRC=GRIDRaytracer.cpp Observer.cpp
+SRC=Observer.cpp Ray.cpp Scene.cpp Object.cpp Serializable.cpp Vector3D.cpp
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
 TARGET=GRIDRaytracer
+TESTS=emptySceneRenderTest simpleSphereRenderTest readScene
 
-GRIDRaytracer: $(OBJ)
-	c++ $^ -o $@
+GRIDRaytracer: $(TARGET).o $(OBJ)
+	$(CC) $^ -o $@
 
 
-emptySceneRenderTest: tests/emptySceneRenderTest.o Ray.o Scene.o  Observer.o  drawableObject.h Vector3D.o
+emptySceneRenderTest: tests/emptySceneRenderTest.o $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+	
+readScene: tests/readScene.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
 simpleSphereRenderTest: tests/simpleSphereRenderTest.o Ray.o Scene.o Observer.o drawableObject.h Vector3D.o Sphere.o
@@ -19,7 +23,8 @@ simpleSphereRenderTest: tests/simpleSphereRenderTest.o Ray.o Scene.o Observer.o 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-
+test: $(TESTS) $(OBJ)
+	
 clean:
 	rm -f *.o $(TARGET)  
 
