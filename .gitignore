@@ -32,3 +32,6 @@ simpleSphereRenderTest
 
 # Editor backup copies
 *~
+
+# Bitmaps
+*.bmp
