@@ -56,4 +56,47 @@ namespace raytracing {
         
     }
 
+  void Observer::serialize(const string &indent){
+/*    string i=indent + "  ";
+    os << "{ " << endl;
+    os << i << "Object: "; Object::serialize(os, i);
+    os << i << "viewingDirection: "; viewingDirection.serialize(os, i);
+    os << i << "xDirection: "; xDirection.serialize(os, i);
+    os << i << "yDirection: "; yDirection.serialize(os, i);
+    os << i << "displayDistance: " << displayDistance << "," << endl;
+    os << i << "xResolution: " << xResolution << "," << endl;
+    os << i << "yResolution: " << yResolution << "," << endl;
+    os << indent << "}" << endl;
+*/
+    string i=indent + "  ";
+    beginObject();
+    writeIdentifier("Object", i); Object::serialize(i);
+    writeIdentifier("viewingDirection", i); viewingDirection.serialize(i);
+    writeIdentifier("xDirection", i); xDirection.serialize(i);
+    writeIdentifier("yDirection", i); yDirection.serialize(i);
+    writePair("displayDistance", displayDistance, i);
+    writePair("xResolution", xResolution, i);
+    writePair("yResolution", yResolution, i, true);
+    endObject(indent);
+
+  }
+  void Observer::deserialize(){
+    cerr << "Deserialize observer" << endl;
+    string nextId;
+    expectObjectBegin();
+    do {
+      nextId =readIdentifier();
+      cerr << "Deserialize Observer<" << nextId << ">" << nextId.compare("Object") << endl;
+      if (nextId.compare("}") == 0) return;
+      if (nextId.compare("Object") == 0) Object::deserialize();
+      if (nextId.compare("viewingDirection") == 0)  viewingDirection.deserialize();
+      if (nextId.compare("xDirection") == 0)  xDirection.deserialize();
+      if (nextId.compare("yDirection") == 0)  yDirection.deserialize();
+      if (nextId.compare("displayDistance") == 0)  displayDistance=readDouble();
+      if (nextId.compare("xResolution") == 0)  xResolution=readDouble();
+      if (nextId.compare("yResolution") == 0)  yResolution=readDouble();
+
+    } while (true);
+  }
+
 }

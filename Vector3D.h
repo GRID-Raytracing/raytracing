@@ -2,10 +2,11 @@
 #define VECTOR3D_H
 
 #include<cmath>
+#include "Serializable.h"
 
 
 namespace raytracing {
-class Vector3D {
+class Vector3D : public Serializable {
 public:
   // constructor
   Vector3D() {}
@@ -45,6 +46,9 @@ public:
   double operator*(Vector3D other) {
   	return x*other.X()+y*other.Y()+z*other.Z();
   }
+  virtual void serialize(const string &indent = "");
+  void deserialize();
+
 
 private:
   double x;
