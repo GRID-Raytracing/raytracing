@@ -18,7 +18,7 @@ Color ShadowedSphere::getColorAtIntersection(Vector3D i, Ray r) {
 			cosAngle = (cosAngle>0)?cosAngle:0;
 			if(DEBUG) cout<< "cos(Angle): " <<cosAngle<<endl;
 			if(DEBUG) cout << "Color: " << color.R()<<","<<color.G()<<","<<color.B()<<endl;
-			if(DEBUG) cout << "Light: " << light.R()<<","<<light.G()<<","<<light.B()<<endl;
+			if(DEBUG) cout << "Light: " << light->color.R()<<","<<light->color.G()<<","<<light->color.B()<<endl;
 			diffuse += cosAngle*color*light->getColor();
 		}
 		
