@@ -28,6 +28,7 @@
 *.app
 emptySceneRenderTest
 simpleSphereRenderTest
+ShadowedSphereRenderTest
 
 
 # Editor backup copies
