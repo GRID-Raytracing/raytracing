@@ -57,17 +57,6 @@ namespace raytracing {
     }
 
   void Observer::serialize(const string &indent){
-/*    string i=indent + "  ";
-    os << "{ " << endl;
-    os << i << "Object: "; Object::serialize(os, i);
-    os << i << "viewingDirection: "; viewingDirection.serialize(os, i);
-    os << i << "xDirection: "; xDirection.serialize(os, i);
-    os << i << "yDirection: "; yDirection.serialize(os, i);
-    os << i << "displayDistance: " << displayDistance << "," << endl;
-    os << i << "xResolution: " << xResolution << "," << endl;
-    os << i << "yResolution: " << yResolution << "," << endl;
-    os << indent << "}" << endl;
-*/
     string i=indent + "  ";
     beginObject();
     writeIdentifier("Object", i); Object::serialize(i);

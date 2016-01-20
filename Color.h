@@ -1,7 +1,10 @@
 #ifndef COLOR_H
 #define COLOR_H
+
+#include "Serializable.h"
+
 namespace raytracing {
- class Color {
+ class Color : public Serializable {
   private:
     double r, g, b;
   public:

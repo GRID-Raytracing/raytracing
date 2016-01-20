@@ -26,6 +26,8 @@ public:
             
         };
 	virtual Color getColorAtIntersection( Vector3D intersection, Ray r) {return Color(0,0,0);};
+        virtual void serialize(const string &indent = "");
+        virtual void deserialize();
 };}
 
 #endif //DRAWABLE_OBJECT_H
