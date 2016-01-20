@@ -53,5 +53,8 @@ namespace raytracing {
       } while (true);
     }
   };
+  
+  inline Color operator*(double d, Color& c) {return c.operator*(d);}
+  
 }
 #endif //COLOR_H
