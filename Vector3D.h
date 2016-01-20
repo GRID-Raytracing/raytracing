@@ -39,13 +39,9 @@ public:
   	return temp;
   }
   
-  Vector3D operator*(double c) {
-      return Vector3D(x*c,y*c,z*c);
-  }
-
-  double operator*(Vector3D other) {
-  	return x*other.X()+y*other.Y()+z*other.Z();
-  }
+  Vector3D operator*(double c) {return Vector3D(x*c,y*c,z*c);}
+  double operator*(Vector3D other) {return x*other.X()+y*other.Y()+z*other.Z();}
+  
   virtual void serialize(const string &indent = "");
   void deserialize();
 
