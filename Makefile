@@ -7,7 +7,7 @@ STANDALONEHEADERS=Color.h drawableObject.h LightSource.h PointLightSource.h Sphe
 SRC=$(filter-out GRIDRaytracer.cpp,$(wildcard *.cpp))
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
 TARGET=GRIDRaytracer
-TESTS=emptySceneRenderTest simpleSphereRenderTest readScene twoSpheresOcclusionTest
+TESTS=emptySceneRenderTest simpleSphereRenderTest readScene twoSpheresOcclusionTest ShadowedSphereTest
 GITS=$(SRC) $(HEADERS) Makefile
 
 GRIDRaytracer: $(TARGET).o $(OBJ)
@@ -35,7 +35,7 @@ ShadowedSphereTest: tests/ShadowedSphereTest.o $(OBJ)
 test: $(TESTS) $(OBJ)
 	
 clean:
-	rm -rf *.o $(TARGET) $(TESTS) simpleSphereTest.bmp twoSpheresTest.bmp
+	rm -rf *.o $(TARGET) $(TESTS) simpleSphereTest.bmp twoSpheresTest.bmp ShadowedSphereTest.bmp
 
 
  
