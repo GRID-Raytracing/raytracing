@@ -2,7 +2,6 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall -pedantic
 
-
 HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) Color.h
 SRC=$(wildcard *.cpp)
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
