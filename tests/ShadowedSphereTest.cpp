@@ -5,6 +5,7 @@
 #include "../ShadowedSphere.h"
 #include "../Constants.h"
 #include "../PointLightSource.h"
+#include "../drawableObject.h"
 #include <iostream>
 
 
