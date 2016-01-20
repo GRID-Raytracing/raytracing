@@ -37,7 +37,7 @@ bool ShadowedSphere::isShadowed(Ray r, LightSource* light) {
 	Scene* scene = Scene::getInstance();
 	vector<drawableObject*>& objects = scene->getDrawableObjects();
 	for(drawableObject* object : objects) {
-		if(object->intersect(r) > lightIntersect) return true;
+		if(object->intersection(r) > lightIntersect) return true;
 	}
 	return false;
 }
