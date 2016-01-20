@@ -4,7 +4,7 @@ CFLAGS=-std=c++11 -Wall -pedantic
 
 HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) $(STANDALONEHEADERS)
 STANDALONEHEADERS=Color.h drawableObject.h LightSource.h PointLightSource.h SphericalLightSource.h
-SRC=$(filter-out GridRaytracer.cpp,$(wildcard *.cpp))
+SRC=$(filter-out GRIDRaytracer.cpp,$(wildcard *.cpp))
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
 TARGET=GRIDRaytracer
 TESTS=emptySceneRenderTest simpleSphereRenderTest readScene twoSpheresOcclusionTest
