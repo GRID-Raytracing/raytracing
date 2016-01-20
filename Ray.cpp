@@ -9,15 +9,15 @@ using std::vector;
 namespace raytracing {
     
     Color Ray::trace() {
-        if(DEBUG) cout<<"tracing..."<<endl;
+        //if(DEBUG) cout<<"tracing..."<<endl;
         Scene* scene = Scene::getInstance();
         vector<drawableObject*>& objects = scene->getDrawableObjects();
         unsigned int closestObjectID;
         double closestDistance = -1;
         for(unsigned int i=0; i<objects.size(); i++) {
-            if(DEBUG) cout<<"Checking object "<<i<<endl;
+            //if(DEBUG) cout<<"Checking object "<<i<<endl;
             double currentDistance = objects[i]->intersection(*this);
-            if(DEBUG) cout<<"Intersection at t="<<currentDistance<<endl;
+            //if(DEBUG) cout<<"Intersection at t="<<currentDistance<<endl;
             if(currentDistance > 0 && (currentDistance < closestDistance || closestDistance < 0)) {
                 closestDistance = currentDistance;
                 closestObjectID = i;
