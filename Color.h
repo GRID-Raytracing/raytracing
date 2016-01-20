@@ -25,7 +25,7 @@ namespace raytracing {
     Color operator+(Color c2) { return Color(r+c2.R(),g+c2.G(),b+c2.B());}
     Color operator*(Color c2) { return Color(r*c2.R(),g*c2.G(),b*c2.B());}
     Color operator*(double d) { return Color(r*d,g*d,b*d);}
-    Color operator+=(Color c2) {return *this + this;}
+    Color operator+=(Color c2) {return *this + c2;}
 
 
     virtual void serialize(const string &indent = ""){
