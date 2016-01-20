@@ -11,7 +11,7 @@ Color ShadowedSphere::getColorAtIntersection(Vector3D i, Ray r) {
 	Color diffuse = Color();
 	
 	for(LightSource* light : lights){
-		if(!isShadowed(Ray(i,(light->getPosition()-i).normalise()), light)){
+		if(!isShadowed(Ray(i,(light->getPosition()-i).normalise(),1), light)){
 			double cosAngle = (i-position).normalise()*(light->getPosition()-i).normalise();
 			cosAngle = (cosAngle>0)?cosAngle:0;
 			diffuse += cosAngle*color*light->getColor();
