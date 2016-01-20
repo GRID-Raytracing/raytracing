@@ -24,6 +24,9 @@ simpleSphereRenderTest: tests/simpleSphereRenderTest.o $(OBJ)
 	
 twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
+	
+ShadowedSphereTest: tests/ShadowedSphereTest.o $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $^ -o $@
