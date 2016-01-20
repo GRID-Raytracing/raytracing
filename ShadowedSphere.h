@@ -5,6 +5,7 @@
 #include "Color.h"
 #include "Vector3D.h"
 #include "Ray.h"
+#include "LightSource.h"
 
 namespace raytracing {
 
@@ -13,6 +14,7 @@ namespace raytracing {
 	public:
 
 		virtual Color getColorAtIntersection(Vector3D i, Ray r) override;
+		virtual bool isShadowed(Ray r, LightSource* light);
 	};
 
 }
