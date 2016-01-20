@@ -1,4 +1,6 @@
 #include "ShadowedSphere.h"
+#include "Scene.h"
+#include "LightSource.h"
 
 using namespace raytracing;
 
