@@ -30,8 +30,9 @@ public:
 	std::vector<LightSource*>& getLightSources() {return lights;}
         Observer& getObserver() {return obs;};
         
-        void setObserver(Observer& o) {obs = o;};
-        void addDrawableObject(drawableObject* d) {drawableObjects.push_back(d);};
+    void setObserver(Observer& o) {obs = o;};
+    void addDrawableObject(drawableObject* d) {drawableObjects.push_back(d);};
+    void addLightSource(LightSource* l) {lights.push_back(l)};
 	virtual void serialize(const string &indent = "");
 	virtual void deserialize();
 };
