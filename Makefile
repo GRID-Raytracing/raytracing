@@ -3,6 +3,7 @@ CC=g++
 CFLAGS=-std=c++11 -Wall -pedantic
 
 HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) Color.h
+STANDALONEHEADERS=Color.h drawableObject.h LightSource.h PointLightSource.h SphericalLightSource.h
 SRC=$(wildcard *.cpp)
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
 TARGET=GRIDRaytracer
@@ -22,7 +23,7 @@ readScene: tests/readScene.o $(OBJ)
 simpleSphereRenderTest: tests/simpleSphereRenderTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
-twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ)
+twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ) $(STANDALONEHEADERS)
 	$(CC) $(CFLAGS) $^ -o $@
 	
 ShadowedSphereTest: tests/ShadowedSphereTest.o $(OBJ)
