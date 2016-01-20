@@ -32,5 +32,12 @@ Color ShadowedSphere::getColorAtIntersection(Vector3D i, Ray r) {
 
 bool ShadowedSphere::isShadowed(Ray r, LightSource* light) {
 	//TODO: IMPLEMENT THIS
+	
+	double lightIntersect = light->intersection(r);
+	Scene* scene = Scene::getInstance();
+	vector<drawableObject*>& objects = scene->getDrawableObjects();
+	for(drawableObject* object : objects) {
+		if(object->intersect(r) > lightIntersect) return true;
+	}
 	return false;
 }
