@@ -1,7 +1,10 @@
 #ifndef COLOR_H
 #define COLOR_H
+
+#include "Serializable.h"
+
 namespace raytracing {
- class Color {
+ class Color : public Serializable {
   private:
     double r, g, b;
   public:
@@ -25,5 +28,31 @@ namespace raytracing {
   };
 
 
+    virtual void serialize(const string &indent = ""){
+      string i=indent+"  ";
+      beginObject();
+      writePair("R", R(), i);
+      writePair("G", G(), i);
+      writePair("B", B(), i, true);
+      endObject(indent);
+    }
+
+    virtual void deserialize(){
+      cerr << "Deserialize Color" << endl;
+      string nextId;
+      expectObjectBegin();
+      do {
+        nextId =readIdentifier();
+//        cerr << "Deserialize Color<" << nextId << ">" << nextId.compare("}") << endl;
+      if (nextId.compare("R") == 0)  SetR(readDouble());
+      if (nextId.compare("G") == 0)  SetG(readDouble());
+      if (nextId.compare("B") == 0)  SetB(readDouble());
+      if (nextId.compare("}") == 0) return;
+//      cerr << "Deserialize Vector x " << x << endl;
+//      cerr << "Deserialize Vector y " << y << endl;
+//      cerr << "Deserialize Vector z " << z << endl;
+      } while (true);
+    }
+  };
 }
 #endif //COLOR_H

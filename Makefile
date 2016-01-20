@@ -2,10 +2,12 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall -pedantic
 
+HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) Color.h
 SRC=$(wildcard *.cpp)
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
 TARGET=GRIDRaytracer
 TESTS=emptySceneRenderTest simpleSphereRenderTest readScene twoSpheresOcclusionTest
+GITS=$(SRC) $(HEADERS) Makefile
 
 GRIDRaytracer: $(TARGET).o $(OBJ)
 	$(CC) $^ -o $@

@@ -18,6 +18,9 @@ public:
   
   virtual double intersection(Ray r) override;
   virtual Color getColorAtIntersection(Vector3D i, Ray r) override;
+  virtual void serialize(const string &indent = "");
+  virtual void deserialize();
+
   
 private:
   double radius;  
