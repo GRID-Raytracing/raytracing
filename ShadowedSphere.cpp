@@ -34,6 +34,7 @@ bool ShadowedSphere::isShadowed(Ray r, LightSource* light) {
 	//TODO: IMPLEMENT THIS
 	
 	double lightIntersect = light->intersection(r);
+	if(DEBUG) cout << "light intersetion: "<<lightIntersect<<endl;
 	Scene* scene = Scene::getInstance();
 	vector<drawableObject*>& objects = scene->getDrawableObjects();
 	for(drawableObject* object : objects) {
