@@ -21,6 +21,13 @@ namespace raytracing {
     unsigned char getCharG(){ return g*255; }
     unsigned char getCharB(){ return b*255; }
     unsigned int RGB(double r, double g, double b){return (r*65536)+(g*256)+b;}
+    
+    Color operator+(Color& c2) { return Color(r+c2.R(),g+c2.G(),b+c2.B());}
+    Color operator*(Color& c2) { return Color(r*c2.R(),g*c2.G(),b*c2.B());}
+    Color operator*(double d) { return Color(r*d,g*d,b*d);}
+  };
+
+
     virtual void serialize(const string &indent = ""){
       string i=indent+"  ";
       beginObject();
