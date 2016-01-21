@@ -26,6 +26,9 @@ simpleSphereRenderTest: tests/simpleSphereRenderTest.o $(OBJ)
 twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 
+movie_1/director_1: director_1.cpp $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+	
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $^ -o $@
 
