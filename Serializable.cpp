@@ -44,6 +44,7 @@ namespace raytracing {
 	   case '\n': break;
 	   case ' ': break;
 	   case ':': return s;
+	   case ']': if (s.compare("") == 0){ s+=c; return s; } else throw "] without newline";
 	   case '}': if (s.compare("") == 0){ s+=c; return s; } else throw "} without newline";
 	   default:
 	     s+=c;

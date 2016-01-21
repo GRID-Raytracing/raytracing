@@ -17,13 +17,17 @@ namespace raytracing {
       if (outfile == nullptr) 
 	outfile = new std::ofstream (path, std::ofstream::out);
       else
-	throw "Multiple outputfiles not possible";
+	throw "Serialize::openOutfile: Multiple outputfiles not possible";
+      if (outfile->bad())
+	throw "Serialize::openOutfile: Unable to open outputfile " + path;
     }
     void openInfile(const string &path){ 
       if (infile == nullptr) 
 	infile = new std::ifstream (path, std::ifstream::in);
       else
 	throw "Multiple inputfiles not possible";
+      if (infile->bad())
+	throw "Serialize::openInfile: Unable to open inputfile " + path;
     }
     void writeIdentifier(const string &id, const string &indent="");
     void beginObject();
