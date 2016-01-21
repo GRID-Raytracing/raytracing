@@ -3,6 +3,7 @@ CC=g++
 CFLAGS=-std=c++11 -Wall -pedantic
 
 SRC=Observer.cpp Ray.cpp Scene.cpp Object.cpp Serializable.cpp Vector3D.cpp Sphere.cpp drawableObject.cpp
+#SRC=$(sort $(wildcard  *.cpp))
 HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) Color.h
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
 TARGET=GRIDRaytracer
