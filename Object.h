@@ -17,6 +17,7 @@ namespace raytracing {
         Object(){}
         //get
         Vector3D getPosition() { return position;}
+        void move(const Vector3D &move){ position=position+move; }
         virtual void serialize(const string &indent = "");
         virtual void deserialize();
     };
