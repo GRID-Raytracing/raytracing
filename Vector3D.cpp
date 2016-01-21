@@ -7,7 +7,7 @@ namespace raytracing {
     beginObject();
     writePair("X", x, i);
     writePair("Y", y, i);
-    writePair("Z", y, i, true);
+    writePair("Z", z, i, true);
     endObject(indent);
   }
   void Vector3D::deserialize(){

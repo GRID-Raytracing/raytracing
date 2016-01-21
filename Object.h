@@ -14,6 +14,7 @@ namespace raytracing {
 	public:
         //constructor
         Object(Vector3D& p): position(p) {}
+        Object(){}
         //get
         Vector3D getPosition() { return position;}
         virtual void serialize(const string &indent = "");

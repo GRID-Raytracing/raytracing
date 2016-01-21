@@ -1,4 +1,5 @@
-#include "Scene.h" 
+#include "Scene.h"
+#include "Sphere.h"
 
 namespace raytracing {
     
@@ -13,20 +14,36 @@ namespace raytracing {
 		return theScene;
 	}
 
-  void Scene::serialize(const string &indent){
+   void Scene::serialize(const string &indent){
+    string i=indent+"  ";
     beginObject();
-    writeIdentifier("Observer", indent+"  ");    obs.serialize(indent + "  ");
+    writeIdentifier("Observer", i);    obs.serialize(i);
+    writeIdentifier("drawableObjects", i); beginList();
+    i=i+"  ";
+    for (unsigned int k=0; k < drawableObjects.size(); k++){
+      //cerr << "Scene::serialize(): " << drawableObjects[k]->type() << endl;;
+      //if (k>0) writeListDelimiter();
+      writeIdentifier(drawableObjects[k]->type(), i);
+      drawableObjects[k]->serialize(i);
+    }
+    endList(indent+"  ");
     endObject(indent);
-    //os << indent << "}" << endl;
   }
   void Scene::deserialize(){
-    cerr << "Deserialize scene" << endl;
     string nextId;
     expectObjectBegin();
     do {
       nextId =readIdentifier();
+      if(DEBUG) cout<<"Scene::deserialize: "<<nextId<<endl;
       if (nextId.compare("}") == 0) return;
       if (nextId.compare(string("Observer")) == 0) obs.deserialize();
+      if (nextId.compare(string("drawableObjects")) == 0) expectListBegin();
+      if (nextId.compare(string("Sphere")) == 0){
+	Sphere *s=new Sphere();
+	s->deserialize();
+	addDrawableObject(s);
+      if (nextId.compare("]") == 0) ; // array end, nothing to be done
+      }
     } while (true);
   }
 }

@@ -34,6 +34,7 @@ public:
         void addDrawableObject(drawableObject* d) {drawableObjects.push_back(d);};
 	virtual void serialize(const string &indent = "");
 	virtual void deserialize();
+	virtual const string type(){ return "Scene"; };
 };
 
 

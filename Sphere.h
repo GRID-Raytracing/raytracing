@@ -9,6 +9,7 @@ public:
   // constructor
   Sphere(Vector3D pos, double ref, Color col, double t, double r) :
     drawableObject(pos, ref, col, t), radius(r) {}
+  Sphere() {} //Defaultobject
   
   // setter
   void setRadius(double r) { radius = r; }
@@ -20,6 +21,7 @@ public:
   virtual Color getColorAtIntersection(Vector3D i, Ray r) override;
   virtual void serialize(const string &indent = "");
   virtual void deserialize();
+  virtual const string type(){ return "Sphere"; }
 
   
 private:

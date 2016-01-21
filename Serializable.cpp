@@ -14,6 +14,15 @@ namespace raytracing {
     void Serializable::endObject(const string &indent){
       *outfile << indent << "}" << endl;
     }
+    void Serializable::beginList(){
+      *outfile << "[" << endl;
+    }
+    void Serializable::endList(const string &indent){
+      *outfile << indent << "]" << endl;
+    }
+    void Serializable::writeListDelimiter(){
+      *outfile << "," << endl;
+    }
     void Serializable::writePair(const string &id, const string &value, const string &indent, bool lastPair){
 //      cerr << "String" << endl;
        *outfile << indent << id << ": " << value << (lastPair?"":",") << endl;
@@ -59,6 +68,22 @@ namespace raytracing {
 	 }
       } while (true);
    }
+   void Serializable::expectListBegin(){
+       char c;
+       do {
+         infile->get(c);
+         if (infile->bad()) 
+	   throw "Missing [";
+	 
+         switch (c){
+	   case '\n': break;
+	   case ' ': break;
+	   case '[': return;
+	   default:
+	     throw "Looking for [, found " + c;
+	 }
+      } while (true);
+   }
    double Serializable::readDouble(){
        char c;
        string s;
@@ -81,6 +106,7 @@ namespace raytracing {
 	   case '8': s+=c; break;
 	   case '9': s+=c; break;
 	   case '.': s+=c; break;
+	   case '-': s+=c; break;
 	   case ',': return atof(s.c_str());
 	   default:
 	     throw "Failing to read double, found " + c;

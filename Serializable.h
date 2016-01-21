@@ -28,12 +28,17 @@ namespace raytracing {
     void writeIdentifier(const string &id, const string &indent="");
     void beginObject();
     void endObject(const string &indent="");
+    void beginList();
+    void endList(const string &indent="");
     void writePair(const string &id, const string &value, const string &indent="", bool lastPair = false);
     void writePair(const string &id, const double &value, const string &indent="", bool lastPair = false);
+    void writeListDelimiter();
     string readIdentifier();
     virtual void serialize(const string &indent = "") = 0;
     virtual void deserialize() = 0;
+    virtual const string type(){ return "Serializable"; } // type information is needed for serialization of arrays of objects
     void expectObjectBegin();
+    void expectListBegin();
     double readDouble();
   };
 }

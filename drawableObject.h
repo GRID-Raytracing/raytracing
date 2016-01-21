@@ -20,6 +20,7 @@ protected:
 	double transparency;
 public:
 	drawableObject(Vector3D& pos, double& ref, Color& c, double& t): Object(pos), reflectivity(ref), color(c), transparency(t) {};
+	drawableObject(){};
 	virtual double intersection (Ray r) {
             if(DEBUG) cout<<"drawableObject called."<<endl;
             return -2;
