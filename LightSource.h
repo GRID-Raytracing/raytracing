@@ -9,8 +9,9 @@ namespace raytracing {
 	
 	class LightSource: public drawableObject {
       // constructor
-      LightSource(Vector3D pos, double ref, Color cl, double tr) :
-        drawableObject(pos, ref, cl, tr) {}		
+	public:
+		LightSource(Vector3D pos, double ref, Color cl, double tr) :
+        	drawableObject(pos, ref, cl, tr) {}		
 	};
 
 }

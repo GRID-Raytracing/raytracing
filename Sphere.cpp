@@ -43,7 +43,7 @@ namespace raytracing {
             if(D < 0) {
                     //no intersection point
                     t = -3.0;
-                    if(DEBUG) cout << "Ray has missed!" <<endl;
+                    //if(DEBUG) cout << "Ray has missed!" <<endl;
             }
             else if(D >= 0){
                     double t1 = (-B + sqrt(D)) / (2*A);

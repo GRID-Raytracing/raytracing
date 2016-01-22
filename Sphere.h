@@ -1,6 +1,12 @@
 #ifndef SPHERE_H
 #define SPHERE_H
 
+#include "drawableObject.h"
+#include "Vector3D.h"
+#include "Color.h"
+#include "Ray.h"
+
+
 using namespace std;
 
 namespace raytracing {

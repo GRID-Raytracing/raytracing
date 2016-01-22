@@ -2,12 +2,14 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall -pedantic
 
-SRC=Observer.cpp Ray.cpp Scene.cpp Object.cpp Serializable.cpp Vector3D.cpp Sphere.cpp drawableObject.cpp
-#SRC=$(sort $(wildcard  *.cpp))
-HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) Color.h
+MAIN=GRIDRaytracer.cpp director_1.cpp $(TESTS)
+HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) $(STANDALONEHEADERS)
+STANDALONEHEADERS=Color.h drawableObject.h LightSource.h PointLightSource.h SphericalLightSource.h
+SRC=$(filter-out $(MAIN),$(wildcard *.cpp))
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
 TARGET=GRIDRaytracer
-TESTS=emptySceneRenderTest simpleSphereRenderTest readScene twoSpheresOcclusionTest
+TESTS=emptySceneRenderTest simpleSphereRenderTest readScene twoSpheresOcclusionTest ShadowedSphereTest
+
 GITS=$(SRC) $(HEADERS) Makefile
 
 GRIDRaytracer: $(TARGET).o $(OBJ)
@@ -23,7 +25,10 @@ readScene: tests/readScene.o $(OBJ)
 simpleSphereRenderTest: tests/simpleSphereRenderTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
-twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ)
+twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ) $(STANDALONEHEADERS)
+	$(CC) $(CFLAGS) $^ -o $@
+	
+ShadowedSphereTest: tests/ShadowedSphereTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 
 movie_1/director_1: director_1.cpp $(OBJ)
@@ -35,7 +40,7 @@ movie_1/director_1: director_1.cpp $(OBJ)
 test: $(TESTS) $(OBJ)
 	
 clean:
-	rm -rf *.o $(TARGET) $(TESTS) simpleSphereTest.bmp twoSpheresTest.bmp
+	rm -rf *.o $(TARGET) $(TESTS) simpleSphereTest.bmp twoSpheresTest.bmp ShadowedSphereTest.bmp
 
 
  
