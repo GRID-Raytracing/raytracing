@@ -28,6 +28,8 @@ namespace raytracing {
         Observer(): Observer(Vector3D(0,0,0), Vector3D(0,0,1), 1.0, Vector3D(0.01,0,0), Vector3D(0,0.01,0), 100, 100) {};
 	void render();
 	void exportImage(string path, string format);
+	virtual void serialize(const string &indent = "");
+	virtual void deserialize();
   };
 }
 

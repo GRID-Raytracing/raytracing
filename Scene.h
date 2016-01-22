@@ -2,6 +2,7 @@
 #define SCENE_H
 
 #include<vector>
+#include "Serializable.h"
 #include "Vector3D.h"
 #include "Ray.h"
 #include "Observer.h"
@@ -10,7 +11,7 @@
 
 namespace raytracing{
     
-class Scene{
+class Scene : public Serializable {
 
 private:
 	Observer obs;
@@ -31,6 +32,9 @@ public:
         
         void setObserver(Observer& o) {obs = o;};
         void addDrawableObject(drawableObject* d) {drawableObjects.push_back(d);};
+	virtual void serialize(const string &indent = "");
+	virtual void deserialize();
+	virtual const string type(){ return "Scene"; };
 };
 
 

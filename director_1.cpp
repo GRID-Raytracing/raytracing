@@ -7,7 +7,7 @@ int main(int argc, char **argv){
   Scene *scene = Scene::getInstance();
 
   string sceneInfilename="scene_in.txt";
-  string imageFiletype=".bmp";
+  string imageFiletype="bmp";
   string imageFilename=string(argv[0]);
   
   
@@ -30,8 +30,6 @@ int main(int argc, char **argv){
     }
   }
 
-  imageFilename=imageFilename+"."+imageFiletype;
-
   scene->openInfile(sceneInfilename);
   try {
     scene->deserialize();
@@ -39,9 +37,13 @@ int main(int argc, char **argv){
     cerr << argv[0] << ": " << e << endl;
     return 101;
   }
-
-  scene->getObserver().render();
-  scene->getObserver().exportImage(imageFilename, imageFiletype);
-
+  std::vector<drawableObject*> drawables=scene->getDrawableObjects();
+  for (int i=1; i<= 10; i++){
+    for (unsigned int k=0; k<drawables.size(); k++)
+      drawables[k]->move(drawables[k]->getPosition()*0.1);
+    scene->getObserver().render();
+    scene->getObserver().exportImage(imageFilename+"_"+to_string(i)+"."+imageFiletype, imageFiletype);
+  }
+  
   return 0;
 }

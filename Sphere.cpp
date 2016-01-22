@@ -59,5 +59,26 @@ namespace raytracing {
     Color Sphere::getColorAtIntersection(Vector3D i, Ray r) {
         return color;
     }
+
+  void Sphere::serialize(const string &indent){
+    string i=indent + "  ";
+    beginObject();
+    writeIdentifier("drawableObject", i); drawableObject::serialize(i);
+    writePair("radius", radius, i, true);
+    endObject(indent);
+
+  }
+  void Sphere::deserialize(){
+    string nextId;
+    expectObjectBegin();
+    do {
+      nextId =readIdentifier();
+      if(DEBUG) cout<<"Sphere::deserialize: "<<nextId<<endl;
+      if (nextId.compare("drawableObject") == 0) drawableObject::deserialize();
+      if (nextId.compare("}") == 0) return;
+      if (nextId.compare("radius") == 0)  radius=readDouble();
+    } while (true);
+  }
+
     
 }

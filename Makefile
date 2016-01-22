@@ -2,29 +2,40 @@
 CC=g++
 CFLAGS=-std=c++11 -Wall -pedantic
 
-SRC=GRIDRaytracer.cpp Observer.cpp
+SRC=Observer.cpp Ray.cpp Scene.cpp Object.cpp Serializable.cpp Vector3D.cpp Sphere.cpp drawableObject.cpp
+#SRC=$(sort $(wildcard  *.cpp))
+HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) Color.h
 OBJ:=$(patsubst %.cpp,%.o, $(SRC))
-EXECS=GRIDRaytracer emptySceneRenderTest simpleSphereRenderTest twoSpheresOcclusionTest
+TARGET=GRIDRaytracer
+TESTS=emptySceneRenderTest simpleSphereRenderTest readScene twoSpheresOcclusionTest
+GITS=$(SRC) $(HEADERS) Makefile
 
-GRIDRaytracer: $(OBJ)
-	c++ $^ -o $@
+GRIDRaytracer: $(TARGET).o $(OBJ)
+	$(CC) $^ -o $@
 
 
-emptySceneRenderTest: tests/emptySceneRenderTest.o Ray.o Scene.o  Observer.o  drawableObject.h Vector3D.o
+emptySceneRenderTest: tests/emptySceneRenderTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
-simpleSphereRenderTest: tests/simpleSphereRenderTest.o Ray.o Scene.o Observer.o drawableObject.h Vector3D.o Sphere.o
+readScene: tests/readScene.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
-twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o Ray.o Scene.o Observer.o drawableObject.h Vector3D.o Sphere.o
+simpleSphereRenderTest: tests/simpleSphereRenderTest.o $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+	
+twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 
+movie_1/director_1: director_1.cpp $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
+	
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $^ -o $@
 
-
+test: $(TESTS) $(OBJ)
+	
 clean:
-	rm -rf *.o $(EXECS) simpleSphereTest.bmp twoSpheresTest.bmp
+	rm -rf *.o $(TARGET) $(TESTS) simpleSphereTest.bmp twoSpheresTest.bmp
 
 
  
