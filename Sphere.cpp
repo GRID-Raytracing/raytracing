@@ -56,10 +56,6 @@ namespace raytracing {
 
     }
     
-    Color Sphere::getColorAtIntersection(Vector3D i, Ray r) {
-        return color;
-    }
-
   void Sphere::serialize(const string &indent){
     string i=indent + "  ";
     beginObject();

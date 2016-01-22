@@ -11,6 +11,7 @@
 namespace raytracing {
     
 class Ray; //forward declaration of Ray
+class LightSource; //forward declaration of LightSource
 
 class drawableObject: public Object {
 
@@ -28,9 +29,11 @@ public:
             return -2;
             
         };
-	virtual Color getColorAtIntersection( Vector3D intersection, Ray r) {return Color(0,0,0);};
-        virtual void serialize(const string &indent = "");
-        virtual void deserialize();
+	virtual Color getColorAtIntersection( Vector3D intersection, Ray r);
+	virtual Vector3D getNormalVectorAtPoint(Vector3D i) {return Vector3D(0,0,0);}
+	virtual bool isShadowed(Ray r, LightSource* light);
+	virtual void serialize(const string &indent = "");
+	virtual void deserialize();
 };}
 
 #endif //DRAWABLE_OBJECT_H

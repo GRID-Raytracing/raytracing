@@ -24,7 +24,8 @@ public:
   double getRadius() { return radius;}
   
   virtual double intersection(Ray r) override;
-  virtual Color getColorAtIntersection(Vector3D i, Ray r) override;
+  virtual Vector3D getNormalVectorAtPoint(Vector3D i) override {return (i-position).normalise();}
+  
   virtual void serialize(const string &indent = "");
   virtual void deserialize();
   virtual const string type(){ return "Sphere"; }
