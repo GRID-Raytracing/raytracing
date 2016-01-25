@@ -35,8 +35,8 @@ namespace raytracing {
 	  Scene* scene = Scene::getInstance();
 	  vector<LightSource*>& lights = scene->getLightSources();
 	  
+	  //diffuse color
 	  Color diffuse = Color();
-	  
 	  for(LightSource* light : lights){
 		  if(!isShadowed(Ray(i,(light->getPosition()-i).normalise(),1), light)){
 			  if(DEBUG) cout<< "Not in Shadow."<<endl;
@@ -53,7 +53,19 @@ namespace raytracing {
 		  
 	  }
 	  if(DEBUG) cout << "Result: " << diffuse.R()<<","<<diffuse.G()<<","<<diffuse.B()<<endl;
-	  return diffuse;
+	  
+	  //reflection
+	  Color reflectedColor(0,0,0);
+	  if(reflectivity>0 && r.getStep()>0){
+	      Vector3D normal = getNormalVectorAtPoint(i);
+	      Vector3D incident = r.getDirection();
+	      Vector3D reflected = incident-2*(normal*incident)*normal;
+	      Ray reflectionRay(i,reflected,r.getStep()-1);
+	      reflectedColor = reflectionRay.trace();
+	  }
+	  
+	  
+	  return diffuse+reflectivity*reflectedColor;
 	  
   }
   
