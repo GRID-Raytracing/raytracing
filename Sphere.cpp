@@ -48,7 +48,7 @@ namespace raytracing {
             else if(D >= 0){
                     double t1 = (-B + sqrt(D)) / (2*A);
                     double t2 = (-B - sqrt(D)) / (2*A);
-                    t = (t1>t2)?t1:t2;
+                    t = (t1<t2)?t1:t2;
                     if(DEBUG) cout << "Ray has hit!" << endl;
             }
 
