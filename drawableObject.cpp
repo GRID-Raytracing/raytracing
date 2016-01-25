@@ -34,34 +34,47 @@ namespace raytracing {
   Color drawableObject::getColorAtIntersection(Vector3D i, Ray r) {
 	  Scene* scene = Scene::getInstance();
 	  vector<LightSource*>& lights = scene->getLightSources();
-	  
+	  if(DEBUG) cout << "Intersection: "<<i<<endl;
+	  //diffuse color
 	  Color diffuse = Color();
-	  
 	  for(LightSource* light : lights){
 		  if(!isShadowed(Ray(i,(light->getPosition()-i).normalise(),1), light)){
-			  if(DEBUG) cout<< "Not in Shadow."<<endl;
+			  //if(DEBUG) cout<< "Not in Shadow."<<endl;
 			  Vector3D normal = getNormalVectorAtPoint(i);
-			  double cosAngle = -1*(normal*(light->getPosition()-i).normalise());
+			  double cosAngle = (normal*(light->getPosition()-i).normalise());
 			  cosAngle = (cosAngle>0)?cosAngle:0;
-			  if(DEBUG) cout<< "cos(Angle): " <<cosAngle<<endl;
-			  if(DEBUG) cout << "Color: " << color.R()<<","<<color.G()<<","<<color.B()<<endl;
-			  if(DEBUG) cout << "Light: " << light->getColor().R()<<","<<light->getColor().G()<<","<<light->getColor().B()<<endl;
+			  //if(DEBUG) cout<< "cos(Angle): " <<cosAngle<<endl;
+			  //if(DEBUG) cout << "Color: " << color.R()<<","<<color.G()<<","<<color.B()<<endl;
+			  //if(DEBUG) cout << "Light: " << light->getColor().R()<<","<<light->getColor().G()<<","<<light->getColor().B()<<endl;
 			  Color temp = cosAngle*color*light->getColor();
-			  if(DEBUG) cout << "illumination: " << temp.R()<<","<<temp.G()<<","<<temp.B()<<endl;
+			  //if(DEBUG) cout << "illumination: " << temp.R()<<","<<temp.G()<<","<<temp.B()<<endl;
 			  diffuse += temp;
 		  }
 		  
 	  }
-	  if(DEBUG) cout << "Result: " << diffuse.R()<<","<<diffuse.G()<<","<<diffuse.B()<<endl;
-	  return diffuse;
+	  //if(DEBUG) cout << "Result: " << diffuse.R()<<","<<diffuse.G()<<","<<diffuse.B()<<endl;
+	  
+	  //reflection
+	  Color reflectedColor(0,0,0);
+	  if(reflectivity>0 && r.getStep()>0){
+	      Vector3D normal = getNormalVectorAtPoint(i);
+		  if(DEBUG) cout <<"Normal Vector:"<< normal.X()<<", "<<normal.Y()<<", "<<normal.Z()<<endl;
+	      Vector3D incident = r.getDirection().normalise();
+		  if (DEBUG) cout <<"Incident Vector:"<<incident.X()<<", "<<incident.Y()<<", "<<incident.Z()<<endl;
+	      Vector3D reflected = incident-2*(normal*incident)*normal;
+	      Ray reflectionRay(i,reflected,r.getStep()-1);
+	      reflectedColor = reflectionRay.trace();
+	  }
+	  
+	  
+	  return diffuse+(reflectivity*reflectedColor);
 	  
   }
   
   bool drawableObject::isShadowed(Ray r, LightSource* light) {
-	  //TODO: IMPLEMENT THIS
 	  
 	  double lightIntersect = light->intersection(r);
-	  if(DEBUG) cout << "light intersetion: "<<lightIntersect<<endl;
+	  //if(DEBUG) cout << "light intersetion: "<<lightIntersect<<endl;
 	  if(lightIntersect == -2) {
 		  cerr<<"Warning: intersection() not implemented for this class! Falling back to drawableObject..."<<endl;
 		  

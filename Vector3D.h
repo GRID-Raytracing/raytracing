@@ -3,6 +3,7 @@
 
 #include<cmath>
 #include "Serializable.h"
+#include <iostream>
 
 
 namespace raytracing {
@@ -42,6 +43,8 @@ public:
   Vector3D operator*(double c) {return Vector3D(x*c,y*c,z*c);}
   double operator*(Vector3D other) {return x*other.X()+y*other.Y()+z*other.Z();}
   
+  friend ostream& operator<<(ostream& os, Vector3D v);
+  
   virtual void serialize(const string &indent = "");
   void deserialize();
 
@@ -53,6 +56,9 @@ private:
 };
 
 inline Vector3D operator*(double c, Vector3D& v) { return v.operator*(c);}
+inline   ostream& operator<<(ostream& os, Vector3D v) {
+	return os<<v.x<<", "<<v.y<<", "<<v.z;
+}
 
 } // namespace raytracing
 
