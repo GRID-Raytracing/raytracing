@@ -25,7 +25,7 @@ readScene: tests/readScene.o $(OBJ)
 simpleSphereRenderTest: tests/simpleSphereRenderTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
-twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ) $(STANDALONEHEADERS)
+twoSpheresOcclusionTest: tests/twoSpheresOcclusionTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
 	
 ShadowedSphereTest: tests/ShadowedSphereTest.o $(OBJ)
