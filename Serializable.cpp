@@ -73,6 +73,7 @@ namespace raytracing {
        char c;
        do {
          infile->get(c);
+         if(DEBUG) cerr<<"Serializable::expectListBegin: "<<c<<endl;
          if (infile->bad()) 
 	   throw "Missing [";
 	 

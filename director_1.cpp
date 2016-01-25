@@ -10,8 +10,18 @@ int main(int argc, char **argv){
   string sceneInfilename="scene_in.txt";
   string imageFiletype="bmp";
   string imageFilename=string(argv[0]);
+/*  
+  ofstream o("image.ppm", std::ofstream::out);
+  o << "P1" << endl;
+  o << "10 10" << endl;
+  for (int i=1; i<=10; i++){
+    for (int k=1; k<=10; k++)
+      o << k%2 << (k<10?" ":"");
+    o<<endl;
+  }
   
-  
+  return 0;
+*/    
 
   for (int i=1; i<argc;i++){
     if (string(argv[i]).compare(string("-s"))==0){

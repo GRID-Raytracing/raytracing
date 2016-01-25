@@ -4,6 +4,8 @@
 #include <fstream>
 #include <iostream>
 
+#include "Constants.h"
+
 using namespace std;
 
 namespace raytracing {

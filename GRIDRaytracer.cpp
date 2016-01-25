@@ -7,7 +7,7 @@ int main(int argc, char **argv){
   Scene *scene = Scene::getInstance();
 
   string sceneInfilename="scene_in.txt";
-  string imageFiletype=".bmp";
+  string imageFiletype="bmp";
   string imageFilename=string(argv[0]);
   
   
@@ -24,14 +24,14 @@ int main(int argc, char **argv){
       imageFilename=string(argv[i]);
     }
     if (string(argv[i]).compare(string("-t"))==0){
-      if (++i >= argc){ cerr << argv[0] << ": Despite option -t no imagefile given" << endl; return 3; }
+      if (++i >= argc){ cerr << argv[0] << ": Despite option -t no imagetype given" << endl; return 3; }
       
       imageFiletype=string(argv[i]);
     }
   }
 
   imageFilename=imageFilename+"."+imageFiletype;
-
+cerr << imageFilename << ", " << imageFiletype << endl;
   scene->openInfile(sceneInfilename);
   try {
     scene->deserialize();

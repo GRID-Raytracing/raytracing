@@ -33,6 +33,7 @@ ShadowedSphereTest: tests/ShadowedSphereTest.o $(OBJ)
 
 movie_1/director_1: director_1.cpp $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
+	cp GRIDRaytracer movie_1
 	
 %.o: %.cpp
 	$(CC) $(CFLAGS) -c $^ -o $@
