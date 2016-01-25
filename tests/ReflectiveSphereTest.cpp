@@ -23,7 +23,7 @@
 	 scene->addLightSource(pointLight);
 	 if(DEBUG) cout << "starting Rendering" <<endl;
 	 scene->getObserver().render();
-	 scene->getObserver().exportImage("ShadowedSphereTest.bmp", "bmp");
+	 scene->getObserver().exportImage("ReflectiveSphereTest.bmp", "bmp");
 	 return 0;
  }
  

@@ -29,10 +29,11 @@
 emptySceneRenderTest
 simpleSphereRenderTest
 ShadowedSphereTest
-
+ReflectiveSphereTest
 
 # Editor backup copies
 *~
+*.kate-swp
 
 # Bitmaps
 *.bmp
