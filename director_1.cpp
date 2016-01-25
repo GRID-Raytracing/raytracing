@@ -1,5 +1,6 @@
 
 #include "Scene.h"
+#include "PointLightSource.h"
 
 using namespace raytracing;
 
@@ -37,12 +38,18 @@ int main(int argc, char **argv){
     cerr << argv[0] << ": " << e << endl;
     return 101;
   }
+  PointLightSource* pointLight = new PointLightSource(Vector3D(0,0,0),0.0,Color(1,1,1),0.0);
+  scene->addLightSource(pointLight);
+
   std::vector<drawableObject*> drawables=scene->getDrawableObjects();
   for (int i=1; i<= 10; i++){
     for (unsigned int k=0; k<drawables.size(); k++)
       drawables[k]->move(drawables[k]->getPosition()*0.1);
-    scene->getObserver().render();
-    scene->getObserver().exportImage(imageFilename+"_"+to_string(i)+"."+imageFiletype, imageFiletype);
+    try { scene->openOutfile(string(argv[0])+"_"+to_string(i)+".txt"); }
+    catch (const char *e){ cerr << argv[0] << ": " << e << endl; return 102; };
+    scene->serialize();
+    //scene->getObserver().render();
+    //scene->getObserver().exportImage(imageFilename+"_"+to_string(i)+"."+imageFiletype, imageFiletype);
   }
   
   return 0;
