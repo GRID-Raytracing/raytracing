@@ -25,7 +25,7 @@ public:
 
 	Color getColor() {return color;}
 	virtual double intersection (Ray r) {
-            if(DEBUG) cout<<"drawableObject called."<<endl;
+            //if(DEBUG) cout<<"drawableObject called."<<endl;
             return -2;
             
         };
