@@ -14,10 +14,13 @@ namespace raytracing {
     static ifstream *infile;
   public:
     void openOutfile(const string &path){ 
+      if (outfile != nullptr) if (outfile->is_open()) outfile->close();
+      
       if (outfile == nullptr) 
 	outfile = new std::ofstream (path, std::ofstream::out);
       else
-	throw "Serialize::openOutfile: Multiple outputfiles not possible";
+	outfile->open(path, std::ofstream::out);
+      
       if (outfile->bad())
 	throw "Serialize::openOutfile: Unable to open outputfile " + path;
     }
