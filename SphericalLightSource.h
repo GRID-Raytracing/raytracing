@@ -7,6 +7,6 @@ namespace raytracing {
 		virtual Color getColorAtIntersection( Vector3D i, Ray r) override {
 			return (color+getReflectionAtIntersection(i,r));
 		};
-	}
+	};
 
 }
