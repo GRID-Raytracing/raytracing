@@ -1,6 +1,6 @@
 
 CC=g++
-CFLAGS=-std=c++11 -Wall -pedantic
+CFLAGS=-std=c++11 -Wall -pedantic -static-libstdc++
 
 MAIN=GRIDRaytracer.cpp director_1.cpp $(TESTS)
 HEADERS=:=$(patsubst %.cpp,%.h, $(SRC)) $(STANDALONEHEADERS)
