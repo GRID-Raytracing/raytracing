@@ -16,7 +16,7 @@ private:
 public:
     // constructor
     Column(Vector3D pos, double ref, Color col, double t, double r, double h) : drawableObject(pos, ref, col, t), radius(r), height(h) {}
-    Sphere() {} //Defaultobject
+    Column() {} //Defaultobject
   
   // setter
   void setRadius(double r) {
