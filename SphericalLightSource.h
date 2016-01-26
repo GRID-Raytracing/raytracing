@@ -1,6 +1,6 @@
 namespace raytracing {
 	
-	class SphericalLightSource: public LightSource, public Sphere {
+	class SphericalLightSource:  public Sphere, public LightSource {
 	public:
 		SphericalLightSource(Vector3D pos, double ref, Color col, double t, double r) :
     		Sphere(pos, ref, col, t, r) {}
