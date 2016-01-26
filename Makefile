@@ -33,6 +33,9 @@ ShadowedSphereTest: tests/ShadowedSphereTest.o $(OBJ)
 
 ReflectiveSphereTest: tests/ReflectiveSphereTest.o $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@
+	
+SphereField: tests/SphereField.o $(OBJ)
+	$(CC) $(CFLAGS) $^ -o $@
 
 movie_1/director_1: director_1.cpp $(OBJ)
 	$(CC) $(CFLAGS) $^ -o $@

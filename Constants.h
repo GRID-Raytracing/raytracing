@@ -7,7 +7,7 @@
 #define MAX_RECURSION 1
 
 //Debug statements
-#define DEBUG 1
+#define DEBUG 0
 
 
 
