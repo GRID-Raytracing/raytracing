@@ -31,13 +31,27 @@ double Plane::intersection(Ray r) {
 
   double t = -(a*(o.X()-position.X())+b*(o.Y()-position.Y())+c*(o.Z()-position.Z()))/(a*d.X()+b*d.Y()+c*d.Z());
   
+  // calculate intersection
   double x = o.X() + d.X()*t;
   double y = o.Y() + d.Y()*t;
   double z = o.Z() + d.Z()*t;
+
+  // for norm
   double xx = (x-o.X()) * (x-o.X());
   double yy = (y-o.Y()) * (y-o.Y());
   double zz = (z-o.Z()) * (z-o.Z());
+  
+  // calculate distance between ray origin and intersection
   double norm = sqrt(xx+yy+zz);
+
+  // check whether object include the point
+  double AB = (B.X()-A.X())*(yy-A.Y())-(xx-A.X())*(B.Y()-A.Y());
+  double BC = (C.X()-B.X())*(yy-B.Y())-(xx-B.X())*(C.Y()-B.Y());
+  double CD = (D.X()-C.X())*(yy-C.Y())-(xx-C.X())*(D.Y()-C.Y());
+  double DA = (A.X()-D.X())*(yy-D.Y())-(xx-D.X())*(A.Y()-D.Y());
+  if (AB > 0 || BC > 0 || CD > 0 || DA > 0) {
+    norm = 0.0;
+  }
 
   return norm;
 }
