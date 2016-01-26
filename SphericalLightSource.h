@@ -7,6 +7,8 @@ namespace raytracing {
 		virtual Color getColorAtIntersection( Vector3D i, Ray r) override {
 			return (LightSource::color+Sphere::getReflectionAtIntersection(i,r));
 		};
+		virtual double intersection (Ray r) {return Sphere::intersection(r);}
+		virtual Vector3D getNormalVectorAtPoint(Vector3D i) {return Sphere::getNormalVectorAtPoint(i);}
 	};
 
 }
