@@ -17,7 +17,7 @@
 	 
 	 for(int i=0; i<10; i++) {
 	 	for(int j=0; j<10; j++) {
-	 		scene->addDrawableObject(new Sphere(Vector3D(-5+i,-5+j,10),0.8, Color(rand(),rand(),rand()), 0.0, 1.0));
+	 		scene->addDrawableObject(new Sphere(Vector3D(-5+i,-5+j,20),0.6, Color(rand()/RAND_MAX,rand()/RAND_MAX,rand()/RAND_MAX), 0.0, 1.0));
 	 	}
 	 }
 	 Observer observer(Vector3D(0,0,0),Vector3D(0,0,1), 1.0, Vector3D(0.001,0,0), Vector3D(0,0.001,0), 1000, 1000);
