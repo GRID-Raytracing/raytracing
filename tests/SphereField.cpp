@@ -3,7 +3,7 @@
  #include "../Scene.h"
  #include "../Sphere.h"
  #include "../Constants.h"
- #include "../PointLightSource.h"
+ #include "../SphericalLightSource.h"
  #include "../drawableObject.h"
  #include "../Observer.h"
  #include <iostream>
@@ -22,8 +22,8 @@
 	 }
 	 Observer observer(Vector3D(0,0,0),Vector3D(0,0,1), 1.0, Vector3D(0.001,0,0), Vector3D(0,0.001,0), 1000, 1000);
 	 scene->setObserver(observer);
-	 PointLightSource* pointLight = new PointLightSource(Vector3D(0,0,0),0.0,Color(1,1,1),0.0);
-	 scene->addLightSource(pointLight);
+	 SphericalLightSource* sLight = new SphericalLightSource(Vector3D(0,0,0),0.0,Color(1,1,1),0.0,1.0);
+	 scene->addLightSource(sLight);
 	 if(DEBUG) cout << "starting Rendering" <<endl;
 	 scene->getObserver().render();
 	 scene->getObserver().exportImage("SphereField.bmp", "bmp");
