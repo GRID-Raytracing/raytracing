@@ -48,7 +48,7 @@ public:
 private:
   Vector3D* vertex;
   
-  void calculatePlaneFormula(double* ar, Vector3D A, Vector3D B, Vector3D C);
+//  void calculatePlaneFormula(double* ar, Vector3D A, Vector3D B, Vector3D C);
 };
 } // namespace raytracing
 
