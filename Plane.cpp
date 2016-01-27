@@ -16,7 +16,8 @@ double Plane::intersection(Ray r) {
   Vector3D A = position;
   Vector3D B = vertex[0];
   Vector3D C = vertex[1];
-  
+  Vector3D D = vertex[2];
+
   ar[0] = (B.Y()-A.Y())*(C.Z()-A.Z())
             -(C.Y()-A.Y())*(B.Z()-A.Z());
   ar[1] = (B.Z()-A.Z())*(C.X()-A.X())
@@ -45,11 +46,19 @@ double Plane::intersection(Ray r) {
   double norm = sqrt(xx+yy+zz);
 
   // check whether object include the point
-  double AB = (B.X()-A.X())*(yy-A.Y())-(xx-A.X())*(B.Y()-A.Y());
+  /*double AB = (B.X()-A.X())*(yy-A.Y())-(xx-A.X())*(B.Y()-A.Y());
   double BC = (C.X()-B.X())*(yy-B.Y())-(xx-B.X())*(C.Y()-B.Y());
   double CD = (D.X()-C.X())*(yy-C.Y())-(xx-C.X())*(D.Y()-C.Y());
   double DA = (A.X()-D.X())*(yy-D.Y())-(xx-D.X())*(A.Y()-D.Y());
   if (AB > 0 || BC > 0 || CD > 0 || DA > 0) {
+    norm = 0.0;
+  }*/
+  Vector3D normal(a, b, c);
+  Vector3D intersect(x, y, z);
+  double d1 = abs(normal * o) / norm;
+  double d2 = abs(normal * intersect) / norm;
+  double ratio = d2 / (d1+d2);
+  if (ratio != 0) {
     norm = 0.0;
   }
 
