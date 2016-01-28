@@ -29,6 +29,7 @@
 emptySceneRenderTest
 simpleSphereRenderTest
 ShadowedSphereTest
+SphereField
 
 
 # Editor backup copies

@@ -20,7 +20,7 @@
 	 		scene->addDrawableObject(new Sphere(Vector3D(-4.5+i,-4.5+j,11),0.8, Color(sin((i/10.)*3.141592),0.5+0.5*cos((j/10.)*3.141592),sin(((i+j)/20.)*3.141592)), 0.0, 0.5));
 	 	}
 	 }
-	 Observer observer(Vector3D(0,0,0),Vector3D(0,0,1), 1.0, Vector3D(0.001,0,0), Vector3D(0,0.001,0), 1000, 1000);
+	 Observer observer(Vector3D(0,0,0),Vector3D(0,0,1), 1.0, Vector3D(0.000125,0,0), Vector3D(0,0.000125,0), 8000, 8000);
 	 scene->setObserver(observer);
 	 SphericalLightSource* sLight = new SphericalLightSource(Vector3D(0,0,0),0.0,Color(1,1,1),0.0,1.0);
 	 scene->addLightSource(sLight);
