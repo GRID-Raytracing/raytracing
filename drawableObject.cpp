@@ -54,20 +54,9 @@ namespace raytracing {
 	  }
 	  //if(DEBUG) cout << "Result: " << diffuse.R()<<","<<diffuse.G()<<","<<diffuse.B()<<endl;
 	  
-	  //reflection
-	  Color reflectedColor(0,0,0);
-	  if(reflectivity>0 && r.getStep()>0){
-	      Vector3D normal = getNormalVectorAtPoint(i);
-		  if(DEBUG) cout <<"Normal Vector:"<< normal.X()<<", "<<normal.Y()<<", "<<normal.Z()<<endl;
-	      Vector3D incident = r.getDirection().normalise();
-		  if (DEBUG) cout <<"Incident Vector:"<<incident.X()<<", "<<incident.Y()<<", "<<incident.Z()<<endl;
-	      Vector3D reflected = incident-2*(normal*incident)*normal;
-	      Ray reflectionRay(i,reflected,r.getStep()-1);
-	      reflectedColor = reflectionRay.trace();
-	  }
+	    
 	  
-	  
-	  return diffuse+(reflectivity*reflectedColor);
+	  return diffuse+getReflectionAtIntersection(i,r);
 	  
   }
   
@@ -89,6 +78,20 @@ namespace raytracing {
 		  if(object->intersection(r) > lightIntersect) return true;
 	  }
 	  return false;
+  }
+  
+  Color drawableObject::getReflectionAtIntersection(Vector3D i, Ray r) {
+  	 Color reflectedColor(0,0,0);
+	  if(reflectivity>0 && r.getStep()>0){
+	      Vector3D normal = getNormalVectorAtPoint(i);
+		  if(DEBUG) cout <<"Normal Vector:"<< normal.X()<<", "<<normal.Y()<<", "<<normal.Z()<<endl;
+	      Vector3D incident = r.getDirection().normalise();
+		  if (DEBUG) cout <<"Incident Vector:"<<incident.X()<<", "<<incident.Y()<<", "<<incident.Z()<<endl;
+	      Vector3D reflected = incident-2*(normal*incident)*normal;
+	      Ray reflectionRay(i,reflected,r.getStep()-1);
+	      reflectedColor = reflectionRay.trace();
+	  }
+	  return reflectivity*reflectedColor;
   }
 
 }

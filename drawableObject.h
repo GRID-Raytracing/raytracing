@@ -32,6 +32,7 @@ public:
 	virtual Color getColorAtIntersection( Vector3D intersection, Ray r);
 	virtual Vector3D getNormalVectorAtPoint(Vector3D i) {return Vector3D(0,0,0);}
 	virtual bool isShadowed(Ray r, LightSource* light);
+	virtual Color getReflectionAtIntersection(Vector3D i, Ray r);
 	virtual void serialize(const string &indent = "");
 	virtual void deserialize();
 };}

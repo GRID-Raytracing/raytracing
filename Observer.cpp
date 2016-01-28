@@ -48,6 +48,7 @@ namespace raytracing {
         //trace rays for each pixel
         for(unsigned int i=0; i<xResolution; i++) {
             for(unsigned int j=0; j<yResolution; j++) {
+		cout<<"Rendering Pixel ("<<i<<", "<<j<<")."<<endl;
                 Vector3D direction = topLeft + i*xDirection + j*yDirection;
                 Ray ray(position, direction, MAX_RECURSION);
                 image[i][j] = ray.trace();

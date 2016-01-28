@@ -30,6 +30,7 @@ emptySceneRenderTest
 simpleSphereRenderTest
 ShadowedSphereTest
 ReflectiveSphereTest
+SphereField
 
 # Editor backup copies
 *~
