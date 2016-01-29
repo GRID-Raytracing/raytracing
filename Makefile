@@ -47,7 +47,7 @@ movie_1/director_1: director_1.cpp $(OBJ)
 test: $(TESTS) $(OBJ)
 	
 clean:
-	rm -rf *.o tests/*.o $(TARGET) $(TESTS) simpleSphereTest.bmp twoSpheresTest.bmp ShadowedSphereTest.bmp
+	rm -rf *.o tests/*.o $(TARGET) $(TESTS) simpleSphereTest.bmp twoSpheresTest.bmp ShadowedSphereTest.bmp emptySceneTest.bmp ReflectiveSphereTest.bmp
 
 
  
