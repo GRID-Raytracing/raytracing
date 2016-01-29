@@ -4,14 +4,14 @@
 #include <cmath>
 #include <iostream>
 
-//http://www.vcl.jp/~kanazawa/raytracing/?page_id=19#toc-03476ddd7e79e9c8fa7d759966a93ba4-10
+/*//http://www.vcl.jp/~kanazawa/raytracing/?page_id=19#toc-03476ddd7e79e9c8fa7d759966a93ba4-10
 
 //    /\
 //   /  \
 //  /    \
 //  --++--
 // ++ : s(vec.position)
-
+*/
 
 namespace raytracing {
 

@@ -6,8 +6,8 @@
 using namespace raytracing;
 
 int main(){
-    Scene& scene = Scene::getInstance();
-    scene.getObserver().render();
-    scene.getObserver().exportImage("emptySceneTest.bmp", "bmp");
+    Scene* scene = Scene::getInstance();
+    scene->getObserver().render();
+    scene->getObserver().exportImage("emptySceneTest.bmp", "bmp");
     return 0;
 }
